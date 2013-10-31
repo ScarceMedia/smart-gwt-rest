@@ -5,11 +5,9 @@
 package com.scarcemedia.gwt.generator;
 
 import com.google.common.base.Preconditions;
-import com.scarcemedia.gwt.generator.dao.DAOGenerator;
 import com.scarcemedia.gwt.generator.definition.Definition;
 import com.scarcemedia.gwt.generator.definition.Model;
 import com.scarcemedia.gwt.generator.definition.PackageDefinition;
-import com.scarcemedia.gwt.generator.model.ModelGenerator;
 import japa.parser.ast.CompilationUnit;
 import japa.parser.ast.body.TypeDeclaration;
 import java.io.File;

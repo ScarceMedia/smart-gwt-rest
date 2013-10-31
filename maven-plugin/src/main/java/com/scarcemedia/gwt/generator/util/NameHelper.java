@@ -132,4 +132,10 @@ public class NameHelper {
     Preconditions.checkArgument(null != packageDefinition, "packageDefinition cannot be null");
     return String.format("%sPersistService", packageDefinition.getPersistenceUnit());
   }
+
+  public static String getPersistLifecycleManagerName(PackageDefinition packageDefinition) {
+    Preconditions.checkArgument(null != packageDefinition, "packageDefinition cannot be null");
+    return String.format("%sPersistenceLifeCycleManager", packageDefinition.getPersistenceUnit());
+  }
+
 }

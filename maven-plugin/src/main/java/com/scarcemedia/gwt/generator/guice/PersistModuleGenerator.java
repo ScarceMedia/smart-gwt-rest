@@ -49,7 +49,6 @@ public class PersistModuleGenerator extends AbstractModelGenerator {
     typeDeclare.getExtends().add(new ClassOrInterfaceType("PrivateModule"));
     
     ImportHelper.addImport(compileUnit, new NameExpr("com.google.inject.PrivateModule"));
-    ImportHelper.addImport(compileUnit, new NameExpr("com.google.inject.persist.jpa.JpaPersistModule"));
     
     MethodDeclaration configureMethod = new MethodDeclaration();
     ASTHelper.addMember(typeDeclare, configureMethod);
@@ -66,7 +65,7 @@ public class PersistModuleGenerator extends AbstractModelGenerator {
      */
     
     
-    MethodCallExpr callBind = bind(new ClassOrInterfaceType("PersistenceLifeCycleManager"), new ClassOrInterfaceType(NameHelper.getPersistServiceAttributeName(packageDefinition)), new ClassOrInterfaceType(NameHelper.getPersistServiceName(packageDefinition)));
+    MethodCallExpr callBind = bind(new ClassOrInterfaceType("PersistenceLifeCycleManager"), new ClassOrInterfaceType(NameHelper.getPersistLifecycleManagerName(packageDefinition)), new ClassOrInterfaceType(NameHelper.getPersistServiceName(packageDefinition)));
     ASTHelper.addStmt(configureMethod.getBody(), callBind);
     
     
