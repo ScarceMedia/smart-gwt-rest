@@ -4,38 +4,17 @@
  */
 package com.scarcemedia.gwt.generator;
 
-import com.google.common.base.Preconditions;
-
 /**
  *
  * @author jeremy
  */
-public class Settings {
+public interface Settings {
 
-  String daoNamespace;
-  AbstractModelGeneratorMojo mojo;
+  String getSharedPackage();
 
-  public Settings(AbstractModelGeneratorMojo mojo) {
-    this.mojo = mojo;
-  }
+  String getDAOPackage();
 
-  public String getSharedPackage() {
-    Preconditions.checkArgument(null != mojo.sharedPackage && !mojo.sharedPackage.isEmpty(), "sharedPackage cannot be null.");
-    return mojo.sharedPackage;
-  }
+  String getDatasourcePackage();
 
-  public String getDAOPackage() {
-    Preconditions.checkArgument(null != mojo.daoPackage && !mojo.daoPackage.isEmpty(), "daoPackage cannot be null.");
-    return mojo.daoPackage;
-  }
-
-  public String getDatasourcePackage() {
-    Preconditions.checkArgument(null != mojo.datasourcePackage && !mojo.datasourcePackage.isEmpty(), "datasourcePackage cannot be null.");
-    return mojo.datasourcePackage;
-  }
-
-  public String getGuicePersistPackage() {
-    Preconditions.checkArgument(null != mojo.guicePersistPackage && !mojo.guicePersistPackage.isEmpty(), "guicePersistPackage cannot be null.");
-    return mojo.guicePersistPackage;
-  }
+  String getGuicePersistPackage();
 }

@@ -4,7 +4,7 @@
  */
 package com.scarcemedia.gwt.generator.guice;
 
-import com.scarcemedia.gwt.generator.AbstractModelGenerator;
+import com.scarcemedia.gwt.generator.AbstractGenerator;
 import com.scarcemedia.gwt.generator.Settings;
 import com.scarcemedia.gwt.generator.definition.Definition;
 import com.scarcemedia.gwt.generator.definition.Model;
@@ -30,7 +30,7 @@ import java.util.ArrayList;
  *
  * @author jeremy
  */
-public class PersistModuleGenerator extends AbstractModelGenerator {
+public class PersistModuleGenerator extends AbstractGenerator {
   
   public PersistModuleGenerator(Settings settings, Definition definition, PackageDefinition packageDefinition, Model model) {
     super(settings, definition, packageDefinition, model);

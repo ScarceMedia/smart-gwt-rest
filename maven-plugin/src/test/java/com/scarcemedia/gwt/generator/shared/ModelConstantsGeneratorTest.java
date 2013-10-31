@@ -4,7 +4,7 @@
  */
 package com.scarcemedia.gwt.generator.shared;
 
-import com.scarcemedia.gwt.generator.ModelGeneratorTest;
+import com.scarcemedia.gwt.generator.AbstractGeneratorTest;
 import com.scarcemedia.gwt.generator.util.NameHelper;
 import japa.parser.ast.CompilationUnit;
 import japa.parser.ast.body.TypeDeclaration;

@@ -4,8 +4,8 @@
  */
 package com.scarcemedia.gwt.generator.mojo;
 
-import com.scarcemedia.gwt.generator.AbstractModelGenerator;
-import com.scarcemedia.gwt.generator.AbstractModelGeneratorMojo;
+import com.scarcemedia.gwt.generator.AbstractGenerator;
+import com.scarcemedia.gwt.generator.AbstractGeneratorMojo;
 import com.scarcemedia.gwt.generator.Settings;
 import com.scarcemedia.gwt.generator.dao.DAOGenerator;
 import com.scarcemedia.gwt.generator.definition.Definition;
@@ -17,10 +17,10 @@ import com.scarcemedia.gwt.generator.definition.PackageDefinition;
  * @author jeremy
  * @goal dao
  */
-public class DAOMojo extends AbstractModelGeneratorMojo {
+public class DAOMojo extends AbstractGeneratorMojo {
 
   @Override
-  protected AbstractModelGenerator[] createModelGenerators(Settings settings, Definition definition, PackageDefinition packageDefinition, Model model) {
-    return new AbstractModelGenerator[]{ new DAOGenerator(settings, definition, packageDefinition, model, true)};
+  protected AbstractGenerator[] createModelGenerators(Settings settings, Definition definition, PackageDefinition packageDefinition, Model model) {
+    return new AbstractGenerator[]{ new DAOGenerator(settings, definition, packageDefinition, model, true)};
   }
 }

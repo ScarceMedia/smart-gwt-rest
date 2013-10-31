@@ -4,8 +4,8 @@
  */
 package com.scarcemedia.gwt.generator.mojo;
 
-import com.scarcemedia.gwt.generator.AbstractModelGenerator;
-import com.scarcemedia.gwt.generator.AbstractModelGeneratorMojo;
+import com.scarcemedia.gwt.generator.AbstractGenerator;
+import com.scarcemedia.gwt.generator.AbstractGeneratorMojo;
 import com.scarcemedia.gwt.generator.Settings;
 import com.scarcemedia.gwt.generator.datasource.DatasourceGenerator;
 import com.scarcemedia.gwt.generator.definition.Definition;
@@ -17,10 +17,10 @@ import com.scarcemedia.gwt.generator.definition.PackageDefinition;
  * @author jeremy
  * @goal datasource
  */
-public class DatasourceMojo extends AbstractModelGeneratorMojo {
+public class DatasourceMojo extends AbstractGeneratorMojo {
 
   @Override
-  protected AbstractModelGenerator[] createModelGenerators(Settings settings, Definition definition, PackageDefinition packageDefinition, Model model) {
-    return new AbstractModelGenerator[]{ new DatasourceGenerator(settings, definition, packageDefinition, model)};
+  protected AbstractGenerator[] createModelGenerators(Settings settings, Definition definition, PackageDefinition packageDefinition, Model model) {
+    return new AbstractGenerator[]{ new DatasourceGenerator(settings, definition, packageDefinition, model)};
   }
 }

@@ -23,7 +23,7 @@ import org.apache.maven.project.MavenProject;
  *
  * @author jeremy
  */
-public abstract class AbstractModelGeneratorMojo extends AbstractMojo {
+public abstract class AbstractGeneratorMojo extends AbstractMojo {
 
   /**
    * Folder where generated-source will be created (automatically added to
@@ -76,7 +76,7 @@ public abstract class AbstractModelGeneratorMojo extends AbstractMojo {
   }
 
   public Settings getSettings() {
-    return new Settings(this);
+    return new MavenSettings(this);
   }
 
   protected void write(CompilationUnit compileUnit) {
@@ -116,9 +116,9 @@ public abstract class AbstractModelGeneratorMojo extends AbstractMojo {
 
     for (PackageDefinition packageDefinition : definition.getPackages()) {
       for (Model model : packageDefinition.getModels()) {
-        AbstractModelGenerator[] generators = createModelGenerators(getSettings(), definition, packageDefinition, model);
+        AbstractGenerator[] generators = createModelGenerators(getSettings(), definition, packageDefinition, model);
 
-        for (AbstractModelGenerator generator : generators) {
+        for (AbstractGenerator generator : generators) {
           CompilationUnit compileUnit = generator.generate();
           write(compileUnit);
         }
@@ -143,5 +143,5 @@ public abstract class AbstractModelGeneratorMojo extends AbstractMojo {
 
   }
 
-  protected abstract AbstractModelGenerator[] createModelGenerators(Settings settings, Definition definition, PackageDefinition packageDefinition, Model model);
+  protected abstract AbstractGenerator[] createModelGenerators(Settings settings, Definition definition, PackageDefinition packageDefinition, Model model);
 }

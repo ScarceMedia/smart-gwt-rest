@@ -29,7 +29,7 @@ import java.util.ArrayList;
  *
  * @author jeremy
  */
-public abstract class AbstractModelGenerator {
+public abstract class AbstractGenerator {
 
   protected CompilationUnit compileUnit;
   protected final PackageDefinition packageDefinition;
@@ -37,7 +37,7 @@ public abstract class AbstractModelGenerator {
   protected final Settings settings;
   protected final Definition definition;
 
-  public AbstractModelGenerator(Settings settings, Definition definition, PackageDefinition packageDefinition, Model model) {
+  public AbstractGenerator(Settings settings, Definition definition, PackageDefinition packageDefinition, Model model) {
     Preconditions.checkArgument(null != settings, "settings cannot be null");
     Preconditions.checkArgument(null != definition, "definition cannot be null");
     Preconditions.checkArgument(null != packageDefinition, "packageDefinition cannot be null.");

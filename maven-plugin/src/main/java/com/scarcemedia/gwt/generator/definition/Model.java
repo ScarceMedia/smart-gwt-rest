@@ -25,6 +25,8 @@ public class Model {
   String table;
   @XmlElement(name = "field")
   List<Field> fields = new ArrayList<Field>();
+  @XmlElement(name = "uniqueIndex")
+  List<UniqueIndex> uniqueIndexes = new ArrayList<UniqueIndex>();
 
   @XmlTransient
   public String getName() {
@@ -54,6 +56,15 @@ public class Model {
   }
 
   @XmlTransient
+  public List<UniqueIndex> getUniqueIndexes() {
+    return uniqueIndexes;
+  }
+
+  public void setUniqueIndexes(List<UniqueIndex> uniqueIndexes) {
+    this.uniqueIndexes = uniqueIndexes;
+  }
+
+  @XmlTransient
   public Field getPrimaryKey() {
     for (Field field : this.fields) {
       if (field.getPrimaryKey()) {
@@ -64,7 +75,6 @@ public class Model {
     return null;
   }
 
-
   public Field getField(String name) {
     Preconditions.checkArgument(null!=name&&!name.isEmpty(), "name cannot be null.");
     for (Field field : fields) {
@@ -73,6 +83,5 @@ public class Model {
       }
     }
     return null;
-
   }
 }

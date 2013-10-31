@@ -5,7 +5,7 @@
 package com.scarcemedia.gwt.generator.datasource;
 
 import com.google.common.base.Preconditions;
-import com.scarcemedia.gwt.generator.AbstractModelGenerator;
+import com.scarcemedia.gwt.generator.AbstractGenerator;
 import com.scarcemedia.gwt.generator.Settings;
 import com.scarcemedia.gwt.generator.definition.Definition;
 import com.scarcemedia.gwt.generator.definition.Field;
@@ -47,7 +47,7 @@ import java.util.Map;
  *
  * @author jeremy
  */
-public class DatasourceGenerator extends AbstractModelGenerator {
+public class DatasourceGenerator extends AbstractGenerator {
 
   public DatasourceGenerator(Settings settings, Definition definition, PackageDefinition packageDefinition, Model model) {
     super(settings, definition, packageDefinition, model);
