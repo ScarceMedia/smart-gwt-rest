@@ -124,6 +124,8 @@ public abstract class AbstractGeneratorMojo extends AbstractMojo {
         }
       }
     }
+    
+    project.addCompileSourceRoot(generateDirectory.getAbsolutePath());
   }
 
   protected Definition load() throws MojoExecutionException, MojoFailureException {

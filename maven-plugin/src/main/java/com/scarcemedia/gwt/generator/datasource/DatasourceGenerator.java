@@ -203,8 +203,7 @@ public class DatasourceGenerator extends AbstractGenerator {
         if (null != referencedDisplayField.getDisplayText() && !referencedDisplayField.getDisplayText().isEmpty()) {
           createReferencedField.getArgs().add(new StringLiteralExpr(referencedDisplayField.getDisplayText()));
         }
-
-
+        
         ArrayAccessExpr arrayAccess = new ArrayAccessExpr(fieldEditorFieldsExpr, new IntegerLiteralExpr(index.toString()));
         AssignExpr assignArray = new AssignExpr(arrayAccess, createReferencedField, AssignExpr.Operator.assign);
         constructor.getBlock().getStmts().add(new ExpressionStmt(assignArray));
@@ -221,8 +220,6 @@ public class DatasourceGenerator extends AbstractGenerator {
   private void processField(Field field) {
     ClassOrInterfaceType fieldType = getDatasourceFieldType(field);
     addFieldImport(fieldType);
-
-
 
     String sharedDataClassName = NameHelper.getSharedDataClassName(model);
     String sharedDataFieldName = NameHelper.getFieldNameConstant(field);
@@ -247,7 +244,11 @@ public class DatasourceGenerator extends AbstractGenerator {
       CodeHelpers.addMethodCall(constructor.getBlock(), variableNameExpr, "setDetail", field.getPrimaryKey());
       CodeHelpers.addMethodCall(constructor.getBlock(), variableNameExpr, "setCanEdit", false);
     }
-
+    
+    if(null!=field.getRequired() && field.getRequired()){
+      CodeHelpers.addMethodCall(constructor.getBlock(), variableNameExpr, "setRequired", true);
+    }
+    
     if (field.hasLength()) {
       String sharedDataFieldLength = NameHelper.getFieldLengthConstant(field);
       CodeHelpers.addMethodCall(constructor.getBlock(), variableNameExpr, "setLength", new QualifiedNameExpr(new NameExpr(sharedDataClassName), sharedDataFieldLength));

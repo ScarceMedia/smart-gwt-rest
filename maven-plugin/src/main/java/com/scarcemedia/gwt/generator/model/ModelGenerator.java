@@ -67,8 +67,8 @@ public class ModelGenerator extends AbstractGenerator {
           continue;
         }
 
-        QualifiedNameExpr constantFieldReference = new QualifiedNameExpr(sharedDataClassExpr, NameHelper.getFieldNameConstant(field));
-        membersArray.getValues().add(constantFieldReference);
+        String variableName = NameHelper.getVariableName(field);
+        membersArray.getValues().add(new StringLiteralExpr(variableName));
       }
       
       NormalAnnotationExpr indexAnnotation = new NormalAnnotationExpr();
@@ -110,7 +110,11 @@ public class ModelGenerator extends AbstractGenerator {
 
   @Override
   protected void onGenerate() {
+    ImportHelper.addImport(compileUnit, new NameExpr("java.io.Serializable"));
     typeDeclare = new ClassOrInterfaceDeclaration(ModifierSet.PUBLIC, false, NameHelper.getModelName(model));
+    typeDeclare.setImplements(new ArrayList<ClassOrInterfaceType>());
+    typeDeclare.getImplements().add(new ClassOrInterfaceType("Serializable"));
+    
     AnnotationHelper.addXmlTypeAnnotation(typeDeclare, compileUnit);
     AnnotationHelper.addEntityAnnotation(typeDeclare, compileUnit);
     AnnotationHelper.addPersistenceUnitAnnotation(typeDeclare, compileUnit, packageDefinition.getPersistenceUnit());
