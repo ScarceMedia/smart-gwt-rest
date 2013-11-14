@@ -111,6 +111,7 @@ public class ModelGenerator extends AbstractGenerator {
   @Override
   protected void onGenerate() {
     ImportHelper.addImport(compileUnit, new NameExpr("java.io.Serializable"));
+    
     typeDeclare = new ClassOrInterfaceDeclaration(ModifierSet.PUBLIC, false, NameHelper.getModelName(model));
     typeDeclare.setImplements(new ArrayList<ClassOrInterfaceType>());
     typeDeclare.getImplements().add(new ClassOrInterfaceType("Serializable"));
@@ -119,8 +120,10 @@ public class ModelGenerator extends AbstractGenerator {
     AnnotationHelper.addEntityAnnotation(typeDeclare, compileUnit);
     AnnotationHelper.addPersistenceUnitAnnotation(typeDeclare, compileUnit, packageDefinition.getPersistenceUnit());
     AnnotationHelper.addTableAnnotation(typeDeclare, compileUnit, model.getTable());
+    AnnotationHelper.addCachableAnnotation(typeDeclare, compileUnit, Boolean.TRUE);
     ImportHelper.addImport(compileUnit, new NameExpr(settings.getSharedPackage() + "." + NameHelper.getSharedDataClassName(model)));
 
+    
     sharedDataClassExpr = new NameExpr(NameHelper.getSharedDataClassName(model));
 
     List<BodyDeclaration> methods = new ArrayList<BodyDeclaration>();

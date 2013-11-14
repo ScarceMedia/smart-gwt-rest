@@ -19,7 +19,7 @@ public class DefinitionTest {
 
     PackageDefinition fooPackage = new PackageDefinition();
     fooPackage.setName("com.example.foo");
-    fooPackage.setPersistenceUnit("foo");
+    fooPackage.setPersistenceUnit("Foo");
     definition.getPackages().add(fooPackage);
 
     Model model = new Model();

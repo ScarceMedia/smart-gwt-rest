@@ -10,6 +10,7 @@ import com.scarcemedia.gwt.generator.Settings;
 import com.scarcemedia.gwt.generator.definition.Definition;
 import com.scarcemedia.gwt.generator.definition.Model;
 import com.scarcemedia.gwt.generator.definition.PackageDefinition;
+import com.scarcemedia.gwt.generator.guice.JPAInitializerGenerator;
 import com.scarcemedia.gwt.generator.guice.ModulePersistenceLifeCycleManagerGenerator;
 import com.scarcemedia.gwt.generator.guice.PersistFilterGenerator;
 import com.scarcemedia.gwt.generator.guice.PersistModuleGenerator;
@@ -30,7 +31,8 @@ public class PersistModuleMojo extends AbstractGeneratorMojo {
       new PersistenceLifeCycleManagerGenerator(settings, definition, packageDefinition, model),
       new PersistFilterGenerator(settings, definition, packageDefinition, model),
       new PersistenceServiceAttributeGenerator(settings, definition, packageDefinition, model),
-      new ModulePersistenceLifeCycleManagerGenerator(settings, definition, packageDefinition, model)
+      new ModulePersistenceLifeCycleManagerGenerator(settings, definition, packageDefinition, model),
+      new JPAInitializerGenerator(settings, definition, packageDefinition, model)
     };
   }
 }

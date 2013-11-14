@@ -45,7 +45,8 @@ public class AnnotationHelper {
   private static final NameExpr temporalNameExpr = new NameExpr("javax.persistence.Temporal");
   private static final NameExpr temporalTypeNameExpr = new NameExpr("javax.persistence.TemporalType");
   private static final NameExpr transactionalNameExpr = new NameExpr("com.google.inject.persist.Transactional");
-
+  private static final NameExpr cacheableNameExpr = new NameExpr("javax.persistence.Cacheable");
+  
   public static void addAnnotation(Parameter parameter, AnnotationExpr annotation) {
     Preconditions.checkArgument(null != parameter, "parameter cannot be null.");
 
@@ -105,6 +106,16 @@ public class AnnotationHelper {
     ImportHelper.addImport(compileUnit, entityNameExpr);
     return annotation;
   }
+  
+  public static AnnotationExpr addCachableAnnotation(TypeDeclaration typeDeclare, CompilationUnit compileUnit, Boolean cacheable) {
+    SingleMemberAnnotationExpr annotation = new SingleMemberAnnotationExpr();
+    annotation.setName(new NameExpr("Cacheable"));
+    annotation.setMemberValue(new BooleanLiteralExpr(cacheable));
+    
+    addAnnotation(typeDeclare, annotation);
+    ImportHelper.addImport(compileUnit, cacheableNameExpr);
+    return annotation;
+  }  
 
   public static AnnotationExpr addPersistenceUnitAnnotation(TypeDeclaration typeDeclare, CompilationUnit compileUnit, String persistenceUnit) {
     NormalAnnotationExpr annotation = new NormalAnnotationExpr();

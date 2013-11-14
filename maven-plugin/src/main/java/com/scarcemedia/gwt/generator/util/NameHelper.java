@@ -138,4 +138,9 @@ public class NameHelper {
     return String.format("%sPersistenceLifeCycleManager", packageDefinition.getPersistenceUnit());
   }
 
+  public static String getJPAInitializerName(PackageDefinition packageDefinition) {
+    Preconditions.checkArgument(null != packageDefinition, "packageDefinition cannot be null");
+    return String.format("%sJPAInitializer", packageDefinition.getPersistenceUnit());
+  }
+  
 }
